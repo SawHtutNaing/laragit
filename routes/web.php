@@ -1,6 +1,10 @@
 <?php
 
+
 use App\Http\Controllers\ProductController;
+
+use App\Http\Controllers\OrderController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +29,8 @@ Route::resource('product-category', ProductController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashbo`ard');
+
+Route::resource('order' , OrderController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
