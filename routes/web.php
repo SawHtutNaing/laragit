@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\OrderController;
@@ -28,9 +28,11 @@ Route::resource('product-category', ProductController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashbo`ard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('order' , OrderController::class);
+
+Route::resource('category', CategoryController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
